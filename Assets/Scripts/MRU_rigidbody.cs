@@ -8,7 +8,7 @@ public class MRU_rigidbody : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = this.GetComponent<Rigidbody>();
-		rb.velocity = 5F * Vector3.forward;
+		rb.velocity = 50F * Vector3.forward;
 	}
 	
 	// Update is called once per frame
