@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692534, g: 0.4967872, b: 0.57508564, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -744,6 +744,10 @@ Prefab:
     - target: {fileID: 1000013552389414, guid: 20175aaf208c3f147b2461ebefd65a17, type: 2}
       propertyPath: m_Name
       value: RampSwitch
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013552389414, guid: 20175aaf208c3f147b2461ebefd65a17, type: 2}
+      propertyPath: m_TagString
+      value: Switch
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 65000013089646142, guid: 20175aaf208c3f147b2461ebefd65a17, type: 2}
@@ -1458,6 +1462,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013552389414, guid: 20175aaf208c3f147b2461ebefd65a17, type: 2}
+      propertyPath: m_TagString
+      value: Switch
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 20175aaf208c3f147b2461ebefd65a17, type: 2}
   m_IsPrefabParent: 0
@@ -2146,11 +2154,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013995433164, guid: 7216c5385c42f644dba3f2aed4b3da39, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000013995433164, guid: 7216c5385c42f644dba3f2aed4b3da39, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 15.37
       objectReference: {fileID: 0}
     - target: {fileID: 4000013995433164, guid: 7216c5385c42f644dba3f2aed4b3da39, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3726,6 +3734,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2061165087}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2069709652 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013552389414, guid: 20175aaf208c3f147b2461ebefd65a17,
+    type: 2}
+  m_PrefabInternal: {fileID: 363907427}
+--- !u!65 &2069709653
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2069709652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3, z: 2}
+  m_Center: {x: 1.5, y: 1.5, z: -1}
 --- !u!1001 &2091890322
 Prefab:
   m_ObjectHideFlags: 0
