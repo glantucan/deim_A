@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692534, g: 0.4967872, b: 0.57508564, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -256,11 +256,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 592883884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 033dacc8d3c103b438639df49d4de442, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c647022dd4bdb64ba42230c3f882640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sideRail: {fileID: 1000012110334764, guid: 74f37c9c9ad8bd34ca650febcc5c4c7a, type: 2}
-  rung: {fileID: 1000012288055728, guid: b087d2e12cb1bb044bd7315aab2e0b1b, type: 2}
+  sideRailPrefab: {fileID: 1000012110334764, guid: 74f37c9c9ad8bd34ca650febcc5c4c7a,
+    type: 2}
+  rungPrefab: {fileID: 1000012288055728, guid: b087d2e12cb1bb044bd7315aab2e0b1b, type: 2}
   cube: {fileID: 847515078}
   rungSeparation: 0.5
 --- !u!4 &592883886
@@ -483,8 +484,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 499c98c4a3f6fad428575a5d86ba9b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sideRail: {fileID: 1000012110334764, guid: 74f37c9c9ad8bd34ca650febcc5c4c7a, type: 2}
-  rung: {fileID: 1000012288055728, guid: b087d2e12cb1bb044bd7315aab2e0b1b, type: 2}
+  sideRailPrefab: {fileID: 1000012110334764, guid: 74f37c9c9ad8bd34ca650febcc5c4c7a,
+    type: 2}
+  rungPrefab: {fileID: 1000012288055728, guid: b087d2e12cb1bb044bd7315aab2e0b1b, type: 2}
+  rungSeparation: 0.5
+  rungNumber: 19
+  height: 10
 --- !u!4 &857975680
 Transform:
   m_ObjectHideFlags: 0
