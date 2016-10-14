@@ -397,7 +397,7 @@ GameObject:
   - 4: {fileID: 1600374846}
   - 114: {fileID: 1600374845}
   m_Layer: 0
-  m_Name: Vectores_13
+  m_Name: Vectores_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,12 +411,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1600374844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1ff93d974d977245a45e6157c93dd9c, type: 3}
+  m_Script: {fileID: 11500000, guid: aa2d62ab70516264abe6e155938d133f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whiteStepPrefab: {fileID: 1000013425331116, guid: 051975e2423219843a0b4b146bca5db8,
-    type: 2}
-  darkStepPrefab: {fileID: 1000011479301594, guid: 265ed7d14658973468489463c704f488,
+  stepPrefab: {fileID: 1000013425331116, guid: 051975e2423219843a0b4b146bca5db8, type: 2}
+  landingPrefab: {fileID: 1000012855614148, guid: afcb9b54b74f48b4e8b35ae5ef96dd78,
     type: 2}
 --- !u!4 &1600374846
 Transform:
