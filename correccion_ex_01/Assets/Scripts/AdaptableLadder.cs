@@ -7,7 +7,6 @@ public class AdaptableLadder : MonoBehaviour {
 	public GameObject cube;
 	public float rungSeparation;
 
-	private int rungNumber;
 	private float height;
 
 	void Start () {
@@ -25,13 +24,18 @@ public class AdaptableLadder : MonoBehaviour {
 		secondSideRail.transform.localScale = new Vector3(oldScale2.x, height, oldScale2.z);
 		secondSideRail.transform.position = new Vector3(0F, this.height/2, this.transform.position.z + 0.95F);
 
-		rungNumber = Mathf.FloorToInt(height/rungSeparation);
 
-		int rungCount = 0;
-		while (rungCount < rungNumber) {
+
+		float lastRungHeight = 0;
+		while (lastRungHeight < height - rungSeparation) {
 			GameObject rungInstance = Object.Instantiate (this.rungPrefab);
-			rungInstance.transform.position = new Vector3 (0F, rungCount*rungSeparation + 0.5F, this.transform.position.z + 0.5F);
-			rungCount = rungCount + 1;
+
+			lastRungHeight = lastRungHeight + rungSeparation;
+			rungInstance.transform.position = new Vector3 (
+				0F, 
+				lastRungHeight, 
+				this.transform.position.z + 0.5F
+			);
 		}
 	}
 
