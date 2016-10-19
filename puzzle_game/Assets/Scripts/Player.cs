@@ -29,32 +29,23 @@ public class Player : MonoBehaviour {
 
 		if (isNearSwitch) {
 			if (Input.GetKeyUp(KeyCode.Space)) {
-				if (this.IsChildActive(nearestButton, "ButtonLight") ==  false) {
-					this.ActivateChild(nearestButton, "ButtonLight");
-					this.ActivateChild(nearestButton, "GlimmerLight");
-					// Y activar la rampa
-				} else {
-					this.DeactivateChild(nearestButton, "ButtonLight");
-					this.DeactivateChild(nearestButton, "GlimmerLight");
-					// Y desactivar la rampa
-				}
+				Transform buttonLightTr = nearestButton.transform.FindChild("ButtonLight");
+				Transform buttonGlimmerLightTr = nearestButton.transform.FindChild("GlimmerLight");
+				// Encontrar el gameobject del mecanismo que queremos activar
+				GameObject ramp = GameObject.Find("AnimatedRamp");
+				Animation rampAnimation = ramp.GetComponent<Animation>();
 
+				if (buttonLightTr.gameObject.activeSelf) { // Si el boton está activo
+					buttonLightTr.gameObject.SetActive(false);
+					buttonGlimmerLightTr.gameObject.SetActive(false);
+					rampAnimation.Play("hideRamp");
+				} else { // si el botón está inactivo
+					buttonLightTr.gameObject.SetActive(true);
+					buttonGlimmerLightTr.gameObject.SetActive(true);
+					rampAnimation.Play("showRamp");
+				}
 			}
 		}
-
-	}
-
-	bool IsChildActive(GameObject parentGO, string childName) {
-		Transform childTr = parentGO.transform.FindChild(childName);
-		GameObject child = childTr.gameObject;
-		return child.activeSelf;
-	}
-
-	void ActivateChild(GameObject parentGO, string childName) {
-		Transform childTr = parentGO.transform.FindChild(childName);
-		GameObject child = childTr.gameObject;
-		child.SetActive(true);
-		Debug.Log("Encendiendo la luz " + childName);
 	}
 
 	void OnTriggerEnter(Collider other) {

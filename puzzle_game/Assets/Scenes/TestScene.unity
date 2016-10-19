@@ -859,6 +859,27 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 500695638}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &540105871 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011194519216, guid: b051fba1d7b15594894bd03ea9ccdb90,
+    type: 2}
+  m_PrefabInternal: {fileID: 2091890322}
+--- !u!111 &540105872
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 540105871}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 7738d4df31051314bb2c83a7a61423d5, type: 2}
+  - {fileID: 7400000, guid: d9bebaf838878b143b1da53c0bbe699b, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &571027332
 GameObject:
   m_ObjectHideFlags: 0
@@ -3822,6 +3843,10 @@ Prefab:
       value: 
       objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000,
         type: 0}
+    - target: {fileID: 1000011194519216, guid: b051fba1d7b15594894bd03ea9ccdb90, type: 2}
+      propertyPath: m_Name
+      value: AnimatedRamp
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95000013667578604, guid: b051fba1d7b15594894bd03ea9ccdb90, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b051fba1d7b15594894bd03ea9ccdb90, type: 2}
