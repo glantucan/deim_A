@@ -29,24 +29,43 @@ public class Player : MonoBehaviour {
 
 		if (isNearSwitch) {
 			if (Input.GetKeyUp(KeyCode.Space)) {
-				Transform buttonLightTr = nearestButton.transform.FindChild("ButtonLight");
-				Transform buttonGlimmerLightTr = nearestButton.transform.FindChild("GlimmerLight");
-				// Encontrar el gameobject del mecanismo que queremos activar
-				GameObject ramp = GameObject.Find("AnimatedRamp");
-				Animation rampAnimation = ramp.GetComponent<Animation>();
-
-				if (buttonLightTr.gameObject.activeSelf) { // Si el boton está activo
-					buttonLightTr.gameObject.SetActive(false);
-					buttonGlimmerLightTr.gameObject.SetActive(false);
-					rampAnimation.Play("hideRamp");
-				} else { // si el botón está inactivo
-					buttonLightTr.gameObject.SetActive(true);
-					buttonGlimmerLightTr.gameObject.SetActive(true);
-					rampAnimation.Play("showRamp");
-				}
+				this.PressButton(nearestButton);
 			}
 		}
 	}
+
+	void PressButton(GameObject button) {
+		bool isButtonActive = this.SwitchButtonState(button);
+		this.PerformAction(button.name, isButtonActive);
+	}
+
+	bool SwitchButtonState(GameObject switchButton) {
+		Transform buttonLightTr = switchButton.transform.FindChild("ButtonLight");
+		Transform buttonGlimmerLightTr = switchButton.transform.FindChild("GlimmerLight");
+
+		bool isButtonActive = buttonLightTr.gameObject.activeSelf;
+
+		buttonLightTr.gameObject.SetActive(!isButtonActive);
+		buttonGlimmerLightTr.gameObject.SetActive(!isButtonActive);
+		return isButtonActive;
+	}
+
+	void PerformAction(string buttonName, bool isButtonActive){
+		string targetSuffix =  this.GetTargetNameSuffix(buttonName);
+		string targetName = "Animated" + targetSuffix;
+		GameObject target = GameObject.Find(targetName);
+		Animation targetAnimation = target.GetComponent<Animation>();
+		if (isButtonActive) {
+			targetAnimation.Play("hide" + targetSuffix);
+		} else {
+			targetAnimation.Play("show" + targetSuffix);
+		}
+	}
+
+	string GetTargetNameSuffix(string name){
+		string[] buttonNameSplitted = name.Split('_');
+		return buttonNameSplitted[0];
+	} 
 
 	void OnTriggerEnter(Collider other) {
 		

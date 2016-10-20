@@ -383,6 +383,10 @@ Prefab:
       value: 
       objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000,
         type: 0}
+    - target: {fileID: 1000012986528272, guid: 797aaec1e927d7b42a07b07647448eb6, type: 2}
+      propertyPath: m_Name
+      value: AnimatedBridge
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 797aaec1e927d7b42a07b07647448eb6, type: 2}
   m_IsPrefabParent: 0
@@ -743,7 +747,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013552389414, guid: 20175aaf208c3f147b2461ebefd65a17, type: 2}
       propertyPath: m_Name
-      value: RampSwitch
+      value: Ramp_Switch
       objectReference: {fileID: 0}
     - target: {fileID: 1000013552389414, guid: 20175aaf208c3f147b2461ebefd65a17, type: 2}
       propertyPath: m_TagString
@@ -755,7 +759,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000011870688088, guid: 20175aaf208c3f147b2461ebefd65a17, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 108000012279536828, guid: 20175aaf208c3f147b2461ebefd65a17,
         type: 2}
@@ -1504,7 +1508,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013552389414, guid: 20175aaf208c3f147b2461ebefd65a17, type: 2}
       propertyPath: m_Name
-      value: BridgeSwitch
+      value: Bridge_Switch
       objectReference: {fileID: 0}
     - target: {fileID: 4000013531034832, guid: 20175aaf208c3f147b2461ebefd65a17, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
