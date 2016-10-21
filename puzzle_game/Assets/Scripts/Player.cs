@@ -10,11 +10,16 @@ public class Player : MonoBehaviour {
 
 	private bool isNearSwitch;
 	private GameObject nearestButton;
+
+	[SerializeField] private GameObject[] inventory;
+	private int objectCount;
 	
 	// Use this for initialization
 	void Start () {
 		this.rb = this.GetComponent<Rigidbody>();
 		this.isNearSwitch = false;
+		this.inventory = new GameObject[5];
+		this.objectCount = 0;
 	}
 	
 	// Update is called once per frame
@@ -72,6 +77,14 @@ public class Player : MonoBehaviour {
 		if (other.tag == "Switch") {
 			this.nearestButton = other.gameObject;
 			this.isNearSwitch = true;
+		}
+
+		if (other.tag == "Pickable") {
+			if (objectCount < inventory.Length) {
+				other.gameObject.SetActive(false);
+				inventory[objectCount] = other.gameObject;
+				objectCount = objectCount + 1;
+			}
 		}
 	}
 
