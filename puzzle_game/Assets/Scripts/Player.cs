@@ -8,7 +8,6 @@ public class Player : MonoBehaviour {
 
 	private Rigidbody rb;
 
-	private bool isNearSwitch;
 	private GameObject nearestButton;
 
 	[SerializeField] private GameObject[] inventory;
@@ -17,7 +16,6 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.rb = this.GetComponent<Rigidbody>();
-		this.isNearSwitch = false;
 		this.inventory = new GameObject[5];
 		this.objectCount = 0;
 	}
@@ -28,13 +26,26 @@ public class Player : MonoBehaviour {
 		float zInput = Input.GetAxisRaw("Vertical");
 		this.direction = xInput * Vector3.right + zInput * Vector3.forward;
 
-		if(this.direction.magnitude != 0) {
+		if (this.direction.magnitude != 0) {
 			this.rb.velocity = this.direction.normalized * this.speed;
 		}
 
-		if (isNearSwitch) {
+		if (nearestButton != null) {
 			if (Input.GetKeyUp(KeyCode.Space)) {
 				this.PressButton(nearestButton);
+			}
+		}
+
+		if (Input.GetMouseButtonUp(0)) {
+			if (objectCount > 0){
+				GameObject stone = this.inventory[this.objectCount - 1];
+				this.inventory[objectCount - 1] = null;
+				this.objectCount = this.objectCount - 1;
+				stone.SetActive(true);							  // Vector3.forward
+				stone.transform.position = this.transform.position + this.transform.forward;
+
+				StoneMovement stoneControl = stone.GetComponent<StoneMovement>();
+				stoneControl.Launch(this.transform.forward);
 			}
 		}
 	}
@@ -76,22 +87,24 @@ public class Player : MonoBehaviour {
 		
 		if (other.tag == "Switch") {
 			this.nearestButton = other.gameObject;
-			this.isNearSwitch = true;
 		}
 
 		if (other.tag == "Pickable") {
-			if (objectCount < inventory.Length) {
-				other.gameObject.SetActive(false);
-				inventory[objectCount] = other.gameObject;
-				objectCount = objectCount + 1;
-			}
+			this.addItemToInventory(objectCount, inventory, other.gameObject);
+		}
+	}
+
+	void addItemToInventory(int itemCount, GameObject[] anyInventory, GameObject item) {
+		if (itemCount < anyInventory.Length) {
+			item.SetActive(false);
+			anyInventory[objectCount] = item;
+			objectCount = objectCount + 1;
 		}
 	}
 
 	void OnTriggerExit(Collider other) {
 		if (other.tag == "Switch") {
 			this.nearestButton = null;
-			this.isNearSwitch = false;
 		}
 	}
 }
