@@ -102,6 +102,8 @@ GameObject:
   - 33: {fileID: 100645516}
   - 65: {fileID: 100645515}
   - 23: {fileID: 100645514}
+  - 114: {fileID: 100645518}
+  - 54: {fileID: 100645519}
   m_Layer: 0
   m_Name: Stone (1)
   m_TagString: Pickable
@@ -168,12 +170,39 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 100645513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.37, y: 0.21, z: 16.46}
+  m_LocalPosition: {x: 12.37, y: 0.25, z: 16.46}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15
+--- !u!114 &100645518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 100645513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56de707d8cf5eb64b83c79c4a0d60c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  v: 30
+--- !u!54 &100645519
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 100645513}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &126008577
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,7 +1426,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011533102726, guid: 063c8e1672c7a5448a0db2b7cbdf7cb4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.21
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4000011533102726, guid: 063c8e1672c7a5448a0db2b7cbdf7cb4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1422,10 +1451,6 @@ Prefab:
     - target: {fileID: 4000011533102726, guid: 063c8e1672c7a5448a0db2b7cbdf7cb4, type: 2}
       propertyPath: m_RootOrder
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010337699708, guid: 063c8e1672c7a5448a0db2b7cbdf7cb4, type: 2}
-      propertyPath: m_Name
-      value: Stone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 063c8e1672c7a5448a0db2b7cbdf7cb4, type: 2}
@@ -1584,6 +1609,8 @@ GameObject:
   - 33: {fileID: 778844988}
   - 65: {fileID: 778844987}
   - 23: {fileID: 778844986}
+  - 114: {fileID: 778844990}
+  - 54: {fileID: 778844991}
   m_Layer: 0
   m_Name: Stone (2)
   m_TagString: Pickable
@@ -1650,12 +1677,39 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 778844985}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.59, y: 0.21, z: 15.68}
+  m_LocalPosition: {x: 6.59, y: 0.25, z: 15.68}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
+--- !u!114 &778844990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 778844985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56de707d8cf5eb64b83c79c4a0d60c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  v: 30
+--- !u!54 &778844991
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 778844985}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &852184184
 Prefab:
   m_ObjectHideFlags: 0
@@ -1754,6 +1808,8 @@ GameObject:
   - 33: {fileID: 998784974}
   - 65: {fileID: 998784973}
   - 23: {fileID: 998784972}
+  - 114: {fileID: 998784976}
+  - 54: {fileID: 998784977}
   m_Layer: 0
   m_Name: Stone (3)
   m_TagString: Pickable
@@ -1820,12 +1876,39 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 998784971}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.71, y: 0.21, z: 12.65}
+  m_LocalPosition: {x: 8.71, y: 0.25, z: 12.65}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
+--- !u!114 &998784976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 998784971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56de707d8cf5eb64b83c79c4a0d60c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  v: 30
+--- !u!54 &998784977
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 998784971}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1023144251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,6 +2000,8 @@ GameObject:
   - 33: {fileID: 1030347703}
   - 65: {fileID: 1030347702}
   - 23: {fileID: 1030347701}
+  - 114: {fileID: 1030347705}
+  - 54: {fileID: 1030347706}
   m_Layer: 0
   m_Name: Stone (5)
   m_TagString: Pickable
@@ -1983,12 +2068,39 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1030347700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.72, y: 0.21, z: 16.46}
+  m_LocalPosition: {x: 1.72, y: 0.25, z: 16.46}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
+--- !u!114 &1030347705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1030347700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56de707d8cf5eb64b83c79c4a0d60c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  v: 30
+--- !u!54 &1030347706
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1030347700}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1034119882
 GameObject:
   m_ObjectHideFlags: 0
@@ -2246,6 +2358,8 @@ GameObject:
   - 33: {fileID: 1169820283}
   - 65: {fileID: 1169820282}
   - 23: {fileID: 1169820281}
+  - 114: {fileID: 1169820285}
+  - 54: {fileID: 1169820286}
   m_Layer: 0
   m_Name: Stone (4)
   m_TagString: Pickable
@@ -2312,12 +2426,39 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1169820280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.98, y: 0.21, z: 19.27}
+  m_LocalPosition: {x: 5.98, y: 0.25, z: 19.27}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
+--- !u!114 &1169820285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1169820280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56de707d8cf5eb64b83c79c4a0d60c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  v: 30
+--- !u!54 &1169820286
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1169820280}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1245505672
 GameObject:
   m_ObjectHideFlags: 0
