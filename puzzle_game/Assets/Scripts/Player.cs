@@ -1,33 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 
 	public float speed;
 	private Vector3 direction;
-
 	private Rigidbody rb;
-
 	private GameObject nearestButton;
-
 	[SerializeField] private GameObject[] inventory;
 	private int objectCount;
+
+	[SerializeField] private List<GameObject> groundContacts;
+	private bool justAfterFalling;
 	
 	// Use this for initialization
 	void Start () {
 		this.rb = this.GetComponent<Rigidbody>();
 		this.inventory = new GameObject[5];
 		this.objectCount = 0;
+		this.groundContacts = new List<GameObject>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		float xInput = Input.GetAxisRaw("Horizontal");
-		float zInput = Input.GetAxisRaw("Vertical");
-		this.direction = xInput * Vector3.right + zInput * Vector3.forward;
+		if (groundContacts.Count > 0) {
+			this.rb.useGravity = false;
+			this.rb.drag = 8F;
+			float xInput = Input.GetAxisRaw("Horizontal");
+			float zInput = Input.GetAxisRaw("Vertical");
+			this.direction = xInput * Vector3.right + zInput * Vector3.forward;
 
-		if (this.direction.magnitude != 0) {
-			this.rb.velocity = this.direction.normalized * this.speed;
+			if (this.direction.magnitude != 0) {
+				this.rb.velocity = this.direction.normalized * this.speed;
+			}
+		} else {
+			this.rb.useGravity = true;
+			this.rb.drag = 0F;
+
+			if (justAfterFalling) {
+				this.rb.velocity = this.rb.velocity * 0.5F; 
+				justAfterFalling = false;
+			}
 		}
 
 		// ROTATION:
@@ -132,6 +146,18 @@ public class Player : MonoBehaviour {
 	void OnTriggerExit(Collider other) {
 		if (other.tag == "Switch") {
 			this.nearestButton = null;
+		}
+	}
+
+	void OnCollisionEnter(Collision colObj) {
+		if (colObj.gameObject.tag == "Ground") {
+			groundContacts.Add(colObj.gameObject);
+		}
+	}
+	void OnCollisionExit(Collision colObj) {
+		if (colObj.gameObject.tag == "Ground") {
+			groundContacts.Remove(colObj.gameObject);
+			justAfterFalling = true;
 		}
 	}
 }
