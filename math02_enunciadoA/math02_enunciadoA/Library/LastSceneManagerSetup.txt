@@ -1,0 +1,4 @@
+sceneSetups:
+- path: C:/Users/oscar.espeso/Downloads/clases/deim_A/ejercicios_corregidos_clase/Assets/Scenes/Vectores14.unity
+  isLoaded: 1
+  isActive: 1

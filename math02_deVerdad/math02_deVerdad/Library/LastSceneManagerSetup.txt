@@ -1,0 +1,4 @@
+sceneSetups:
+- path: C:/Users/oscar.espeso/Downloads/clases/deim_A/math02_enunciadoA/math02_enunciadoA/Assets/Scenes/Waypoints.unity
+  isLoaded: 1
+  isActive: 1
