@@ -5,11 +5,14 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour {
 
 	public float speed;
+	public float jumpSpeed;
 	private Vector3 direction;
 	private Rigidbody rb;
 	private GameObject nearestButton;
 	[SerializeField] private GameObject[] inventory;
 	private int objectCount;
+
+	[SerializeField] private bool canIJump;
 
 	[SerializeField] private List<GameObject> groundContacts;
 	private bool justAfterFalling;
@@ -20,8 +23,18 @@ public class Player : MonoBehaviour {
 		this.inventory = new GameObject[5];
 		this.objectCount = 0;
 		this.groundContacts = new List<GameObject>();
+		this.canIJump = true;
 	}
-	
+
+	void FixedUpdate() {
+		if(canIJump) {
+			if (Input.GetKey(KeyCode.Space)) {
+				this.rb.velocity = this.rb.velocity + Vector3.up * jumpSpeed;
+				canIJump = false;
+			}
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (groundContacts.Count > 0) {
@@ -34,14 +47,22 @@ public class Player : MonoBehaviour {
 			if (this.direction.magnitude != 0) {
 				this.rb.velocity = this.direction.normalized * this.speed;
 			}
+
+
 		} else {
 			this.rb.useGravity = true;
 			this.rb.drag = 0F;
+			float xInput = Input.GetAxisRaw("Horizontal");
+			float zInput = Input.GetAxisRaw("Vertical");
+			this.direction = xInput * Vector3.right + zInput * Vector3.forward;
 
-			if (justAfterFalling) {
+			this.rb.velocity = this.direction.normalized * this.speed +
+								Vector3.up * rb.velocity.y;  
+			
+			/*if (justAfterFalling) {
 				this.rb.velocity = this.rb.velocity * 0.5F; 
 				justAfterFalling = false;
-			}
+			}*/
 		}
 
 		// ROTATION:
@@ -72,7 +93,7 @@ public class Player : MonoBehaviour {
 
 
 		if (nearestButton != null) {
-			if (Input.GetKeyUp(KeyCode.Space)) {
+			if (Input.GetKeyUp(KeyCode.E)) {
 				this.PressButton(nearestButton);
 			}
 		}
@@ -133,6 +154,11 @@ public class Player : MonoBehaviour {
 		if (other.tag == "Pickable") {
 			this.addItemToInventory(objectCount, inventory, other.gameObject);
 		}
+
+		if (other.tag == "Ground") {
+			groundContacts.Add(other.gameObject);
+			canIJump = true;
+		}
 	}
 
 	void addItemToInventory(int itemCount, GameObject[] anyInventory, GameObject item) {
@@ -147,19 +173,14 @@ public class Player : MonoBehaviour {
 		if (other.tag == "Switch") {
 			this.nearestButton = null;
 		}
+
+		if (other.tag == "Ground") {
+			groundContacts.Remove(other.gameObject);
+			//justAfterFalling = true;
+		}
 	}
 
-	void OnCollisionEnter(Collision colObj) {
-		if (colObj.gameObject.tag == "Ground") {
-			groundContacts.Add(colObj.gameObject);
-		}
-	}
-	void OnCollisionExit(Collision colObj) {
-		if (colObj.gameObject.tag == "Ground") {
-			groundContacts.Remove(colObj.gameObject);
-			justAfterFalling = true;
-		}
-	}
+
 }
 
 

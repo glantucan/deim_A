@@ -4548,8 +4548,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  jumpSpeed: 7
   inventory: []
+  canIJump: 0
   groundContacts: []
+--- !u!65 &2110437223
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2110437216}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.36708272, y: 0.16247559, z: 0.36316836}
+  m_Center: {x: -0.0095644, y: -1, z: 0.036361456}
 --- !u!1 &2125606876
 GameObject:
   m_ObjectHideFlags: 0
