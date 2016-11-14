@@ -12,7 +12,6 @@ public class Player : MonoBehaviour {
 	[SerializeField] private GameObject[] inventory;
 	private int objectCount;
 
-	[SerializeField] private bool canIJump;
 
 	[SerializeField] private List<GameObject> groundContacts;
 	private bool justAfterFalling;
@@ -23,21 +22,18 @@ public class Player : MonoBehaviour {
 		this.inventory = new GameObject[5];
 		this.objectCount = 0;
 		this.groundContacts = new List<GameObject>();
-		this.canIJump = true;
 	}
 
-	void FixedUpdate() {
-		if(canIJump) {
-			if (Input.GetKey(KeyCode.Space)) {
-				this.rb.velocity = this.rb.velocity + Vector3.up * jumpSpeed;
-				canIJump = false;
-			}
-		}
-	}
+
 
 	// Update is called once per frame
 	void Update () {
 		if (groundContacts.Count > 0) {
+			this.rb.velocity = new Vector3(
+				this.rb.velocity.x,
+				0F,
+				this.rb.velocity.z
+			);
 			this.rb.useGravity = false;
 			this.rb.drag = 8F;
 			float xInput = Input.GetAxisRaw("Horizontal");
@@ -48,6 +44,10 @@ public class Player : MonoBehaviour {
 				this.rb.velocity = this.direction.normalized * this.speed;
 			}
 
+
+			if (Input.GetKey(KeyCode.Space)) {
+				this.rb.velocity = this.rb.velocity + Vector3.up * jumpSpeed;
+			}
 
 		} else {
 			this.rb.useGravity = true;
@@ -157,7 +157,6 @@ public class Player : MonoBehaviour {
 
 		if (other.tag == "Ground") {
 			groundContacts.Add(other.gameObject);
-			canIJump = true;
 		}
 	}
 
