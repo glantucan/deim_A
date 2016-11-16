@@ -1,4 +1,4 @@
 sceneSetups:
-- path: C:/Users/oscar.espeso/Downloads/math02b_miriam/math02b_miriam/Assets/Scenes/RandomDestination.unity
+- path: Assets/Scenes/TestScene.unity
   isLoaded: 1
   isActive: 1

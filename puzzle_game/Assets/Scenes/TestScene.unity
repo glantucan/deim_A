@@ -4550,8 +4550,8 @@ MonoBehaviour:
   speed: 10
   jumpSpeed: 7
   inventory: []
-  canIJump: 0
   groundContacts: []
+  cameraTr: {fileID: 1045210801}
 --- !u!65 &2110437223
 BoxCollider:
   m_ObjectHideFlags: 0

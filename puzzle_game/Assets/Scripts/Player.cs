@@ -9,12 +9,18 @@ public class Player : MonoBehaviour {
 	private Vector3 direction;
 	private Rigidbody rb;
 	private GameObject nearestButton;
+
 	[SerializeField] private GameObject[] inventory;
 	private int objectCount;
 
 
 	[SerializeField] private List<GameObject> groundContacts;
-	private bool justAfterFalling;
+
+	[SerializeField] private Transform cameraTr;
+	private Vector3 cameraPlayerDistance;
+
+
+
 	
 	// Use this for initialization
 	void Start () {
@@ -22,12 +28,106 @@ public class Player : MonoBehaviour {
 		this.inventory = new GameObject[5];
 		this.objectCount = 0;
 		this.groundContacts = new List<GameObject>();
+		this.cameraPlayerDistance =  this.cameraTr.position - this.transform.position;
 	}
 
 
 
 	// Update is called once per frame
 	void Update () {
+
+		MovePlayer();
+
+		RotatePlayer();
+
+		// Buttons activation
+		if (nearestButton != null) {
+			if (Input.GetKeyUp(KeyCode.F)) {
+				this.PressButton(nearestButton);
+			}
+		}
+
+		ThrowStones();
+
+		if (Input.GetKeyUp(KeyCode.Q)) {
+			this.cameraPlayerDistance = new Vector3(
+				this.cameraPlayerDistance.z,
+				this.cameraPlayerDistance.y,
+				-this.cameraPlayerDistance.x
+			);
+
+			this.direction = new Vector3( 
+				this.direction.z,
+				0F,
+            	-this.direction.x
+            );
+
+		} else if (Input.GetKeyUp(KeyCode.E)) {
+			this.cameraPlayerDistance = new Vector3(
+				-this.cameraPlayerDistance.z,
+				this.cameraPlayerDistance.y,
+				this.cameraPlayerDistance.x
+			);
+
+			this.direction = new Vector3( 
+				-this.direction.z,
+				0F,
+            	this.direction.x
+            );
+		}
+
+	}
+
+	void FixedUpdate() {
+		// CameraFollow
+		this.cameraTr.LookAt(this.transform);
+		Vector3 camWantedPosition = this.transform.position + this.cameraPlayerDistance;
+		//this.cameraTr.position = camWantedPosition;
+		this.cameraTr.position = Vector3.Lerp(this.cameraTr.position, camWantedPosition, 0.05F); 
+	}
+
+	void ThrowStones() {
+		if (Input.GetMouseButtonUp(0)) {
+			if (objectCount > 0){
+				GameObject stone = this.inventory[this.objectCount - 1];
+				this.inventory[objectCount - 1] = null;
+				this.objectCount = this.objectCount - 1;
+				stone.SetActive(true);							  // Vector3.forward
+				stone.transform.position = this.transform.position + this.transform.forward;
+
+				StoneMovement stoneControl = stone.GetComponent<StoneMovement>();
+				stoneControl.Launch(this.transform.forward + 0.25F * Vector3.up);
+			}
+		}
+	}
+
+	void RotatePlayer() {
+		// ROTATION:
+		// -------------------------------------------------------------------------------------------------------------
+		// Create the ray starting at the camera with the direction corresponding to the 2D position
+		// of the mouse pointer on the screen.
+		Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+		// Create a plane, parallel to the ground and at the height of the player gameobject 
+		// to intersect the camera ray. This way we avoid inconsitencies produced 
+		// by different game object heights in the scene.
+		Plane viewPlane = new Plane(Vector3.up, this.transform.position); 	// 1st paramenter is the vector defining orientation of 
+																// the plane. 2nd is just a point the plane must include
+        // Define a float to hold the distance to the intersection point
+        float rayDistance;
+        // Cast the ray from the plane and check if there is an intersection
+        if (viewPlane.Raycast(mouseRay, out rayDistance)) {
+        	// Get the intersection point between the ray and the plane
+            Vector3 intersectionPoint = mouseRay.GetPoint(rayDistance);
+            // Draw a line in the editor so we cans see the ray and check 
+            // whether it's all right
+            Debug.DrawLine(mouseRay.origin, intersectionPoint, Color.green);
+            // Finally rotate the player so it looks to the intersection point
+            //rotator.rotate(intersectionPoint);
+            this.transform.LookAt(intersectionPoint);
+        }
+	}
+
+	void MovePlayer () {
 		if (groundContacts.Count > 0) {
 			this.rb.velocity = new Vector3(
 				this.rb.velocity.x,
@@ -59,56 +159,6 @@ public class Player : MonoBehaviour {
 			this.rb.velocity = this.direction.normalized * this.speed +
 								Vector3.up * rb.velocity.y;  
 			
-			/*if (justAfterFalling) {
-				this.rb.velocity = this.rb.velocity * 0.5F; 
-				justAfterFalling = false;
-			}*/
-		}
-
-		// ROTATION:
-		// -------------------------------------------------------------------------------------------------------------
-		// Create the ray starting at the camera with the direction corresponding to the 2D position
-		// of the mouse pointer on the screen.
-		Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-		// Create a plane, parallel to the ground and at the height of the player gameobject 
-		// to intersect the camera ray. This way we avoid inconsitencies produced 
-		// by different game object heights in the scene.
-		Plane viewPlane = new Plane(Vector3.up, this.transform.position); 	// 1st paramenter is the vector defining orientation of 
-																// the plane. 2nd is just a point the plane must include
-        // Define a float to hold the distance to the intersection point
-        float rayDistance;
-        // Cast the ray from the plane and check if there is an intersection
-        if (viewPlane.Raycast(mouseRay, out rayDistance)) {
-        	// Get the intersection point between the ray and the plane
-            Vector3 intersectionPoint = mouseRay.GetPoint(rayDistance);
-            // Draw a line in the editor so we cans see the ray and check 
-            // whether it's all right
-            Debug.DrawLine(mouseRay.origin, intersectionPoint, Color.green);
-            // Finally rotate the player so it looks to the intersection point
-            //rotator.rotate(intersectionPoint);
-            this.transform.LookAt(intersectionPoint);
-        }
-
-
-
-
-		if (nearestButton != null) {
-			if (Input.GetKeyUp(KeyCode.E)) {
-				this.PressButton(nearestButton);
-			}
-		}
-
-		if (Input.GetMouseButtonUp(0)) {
-			if (objectCount > 0){
-				GameObject stone = this.inventory[this.objectCount - 1];
-				this.inventory[objectCount - 1] = null;
-				this.objectCount = this.objectCount - 1;
-				stone.SetActive(true);							  // Vector3.forward
-				stone.transform.position = this.transform.position + this.transform.forward;
-
-				StoneMovement stoneControl = stone.GetComponent<StoneMovement>();
-				stoneControl.Launch(this.transform.forward + 0.25F * Vector3.up);
-			}
 		}
 	}
 
@@ -175,7 +225,6 @@ public class Player : MonoBehaviour {
 
 		if (other.tag == "Ground") {
 			groundContacts.Remove(other.gameObject);
-			//justAfterFalling = true;
 		}
 	}
 
