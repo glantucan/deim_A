@@ -27,13 +27,14 @@ public class PlayerInventory : MonoBehaviour {
 		}
 	}
 
-	public GameObject GetStone() {
-		if (this.GetObjectCount() > 0){
-			GameObject stone = this.inventory[this.objectCount - 1];
+	public GameObject GetItemFromInventory() {
+		GameObject stone = null;
+		if (this.GetObjectCount() > 0) {
+			stone = this.inventory[this.objectCount - 1];
 			this.inventory[objectCount - 1] = null;
 			this.objectCount = this.objectCount - 1;
-			return stone;
 		}
+		return stone;
 	}
 
 	public int GetObjectCount() {
