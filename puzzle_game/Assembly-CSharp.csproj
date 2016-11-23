@@ -45,10 +45,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Actions\ITargetAction.cs" />
+     <Compile Include="Assets\Scripts\Actions\TargetAnimation.cs" />
+     <Compile Include="Assets\Scripts\Button\ButtonActivation.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
      <Compile Include="Assets\Scripts\MRUTest\MRU.cs" />
      <Compile Include="Assets\Scripts\MRUTest\MRU_rigidbody.cs" />
-     <Compile Include="Assets\Scripts\Player\ButtonActivation.cs" />
+     <Compile Include="Assets\Scripts\Player\ButtonDetection.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerInventory.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerRotation.cs" />
