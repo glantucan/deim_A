@@ -7,27 +7,29 @@ public class ButtonActivation : MonoBehaviour {
 	[SerializeField] private GameObject buttonLight;
 	[SerializeField] private GameObject buttonGlimmerLight;
 
+
 	[SerializeField] private GameObject target;
 
 	private ITargetAction targetAction;
+
 
 	private void Start() {
 		isActive = false;
 		this.targetAction = target.GetComponent<ITargetAction>();
 	}
 
-	public void Interact() {
+	public void Interact(GameObject player) {
 		if (this.isActive) {
 			this.DeActivate();
 		} else {
-			this.Activate();
+			this.Activate(player);
 		}
 	}
 
-	private void Activate(){
+	private void Activate(GameObject player){
 		buttonLight.SetActive(true);
 		buttonGlimmerLight.SetActive(true);
-		targetAction.DoAction();
+		targetAction.DoAction(player);
 		// Falta realizar la acción del botón
 		this.isActive = true;
 	}

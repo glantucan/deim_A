@@ -11,7 +11,7 @@ public class ButtonDetection : MonoBehaviour {
 		if (nearestButton != null) {
 			if (Input.GetKeyUp(KeyCode.F)) {
 				ButtonActivation activator = nearestButton.GetComponent<ButtonActivation>();
-				activator.Interact();
+				activator.Interact(this.gameObject);
 			}
 		}
 	}

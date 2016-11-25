@@ -3,6 +3,6 @@ using System.Collections;
 
 public interface ITargetAction {
 
-	void DoAction();
+	void DoAction(GameObject player);
 	void UndoAction();
 }
