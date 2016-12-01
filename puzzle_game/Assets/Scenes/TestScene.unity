@@ -1970,7 +1970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62badfcf785b3cf4bbb18f10a22f713f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vel: 0
+  vel: 2
 --- !u!1 &936065324
 GameObject:
   m_ObjectHideFlags: 0
@@ -4642,7 +4642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonLight: {fileID: 568818450}
   buttonGlimmerLight: {fileID: 1694649807}
-  target: {fileID: 189548833}
+  target: {fileID: 858354022}
 --- !u!1001 &2091890322
 Prefab:
   m_ObjectHideFlags: 0
